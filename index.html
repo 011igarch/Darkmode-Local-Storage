@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dark Mode Local Storage</title>
+    <style>
+      body.dark-mode {
+        background-color: black;
+        color: white;
+      }
+    </style>
+  </head>
+  <body class="dark-mode">
+    <button id="toggleMode">Enable Dark Mode</button>
+    <h1>Local Storage</h1>
+    <p>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae aperiam
+      minus est vitae, illo veniam quos, voluptates aliquam ex porro vel itaque
+      nostrum voluptate. Placeat explicabo similique consequuntur cum deleniti
+      cupiditate ad sint nemo reprehenderit amet magnam, consequatur, facere
+      saepe quas necessitatibus, ipsa aliquam exercitationem numquam
+      perspiciatis corporis voluptatibus officia. Laudantium itaque aperiam
+      incidunt, natus, doloribus similique voluptate sit repellendus cum
+      voluptas dolor nam, accusamus tempora? Quos sed quo autem quasi. Autem
+      quidem quae debitis animi minima necessitatibus alias ab fugit harum
+      nesciunt. Maiores ipsa cupiditate asperiores. Quidem id, numquam velit
+      error ipsam accusantium! Quas illo ex assumenda ea magni.
+    </p>
+    <script>
+      const toggleButton = document.querySelector("#toggleMode");
+
+      const toggleTheme = () => {
+        if (document.body.classList.contains("dark-mode")) {
+          localStorage.setItem("theme", "light");
+          document.body.classList.remove("dark-mode");
+          toggleButton.textContent = "Enable Dark Mode";
+        } else {
+          localStorage.setItem("theme", "dark");
+          document.body.classList.add("dark-mode");
+          toggleButton.textContent = "Enable Light Mode";
+        }
+      };
+
+      const applySavedTheme = () => {
+        const savedTheme = localStorage.getItem("theme");
+        if (savedTheme === "dark") {
+          document.body.classList.add("dark-mode");
+          toggleButton.textContent = "Enable Light Mode";
+        }
+      };
+
+      toggleButton.addEventListener("click", toggleTheme);
+
+      applySavedTheme();
+    </script>
+  </body>
+</html>
